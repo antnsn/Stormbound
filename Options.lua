@@ -9,14 +9,39 @@ local function TotemPage(UI)
 	local W = UI.CONTENT_W
 	p:Add(select(2, UI.DBToggle(p, 0, p.y, W, "totems", "Show the totem bar",
 		"Left-click drops the last totem of that element again, right-click removes it.")) + 6)
-	p:Add(select(2, UI.DBToggle(p, 0, p.y, W, "totemTimers", "Time left on each button")) + 6)
-	p:Add(UI.Note(p, p.y, "Unlock the frames (footer below) to move the bar or scale it with the mouse wheel."))
+	p:Add(select(2, UI.DBToggle(p, 0, p.y, W, "totemTimers", "Time left on each button")) + 10)
+	p:Add(UI.Section(p, p.y, "What each button drops") + 2)
+	for _, e in ipairs(ns.TOTEM_ELEMENTS) do
+		-- the list is refilled each time the window opens (before the selector syncs), so totems
+		-- learned or lost since are right
+		local values = {}
+		local function Fill()
+			for i = #values, 1, -1 do values[i] = nil end
+			values[1] = "Last used"
+			for _, n in ipairs(ns.KnownTotems(e.key)) do values[#values + 1] = n end
+		end
+		Fill()
+		UI.Syncer(Fill)
+		p:Add(select(2, UI.Cycle(p, p.y, e.label, values,
+			function() return ns.db.totemChoice[e.key] or "Last used" end,
+			function(v) ns.db.totemChoice[e.key] = (v ~= "Last used") and v or nil end,
+			function() return #values == 1 and "No " .. e.label:lower() .. " totem learned yet." or nil end)) + 2)
+	end
+	p:Add(6)
+	p:Add(UI.Note(p, p.y, "Tip: the mouse wheel over a totem button picks its totem too. Unlock the frames (footer) to move the bar."))
 end
 
 local function ShieldPage(UI)
-	local p = UI.NewPage("Shield & imbue", "Lightning Shield and your weapon imbue. Click a card to cast (out of combat).")
+	local p = UI.NewPage("Shield & imbue", "Your shield and your weapon imbue. Click a card to cast (out of combat).")
 	local W = UI.CONTENT_W
-	p:Add(UI.Section(p, p.y - 4, "Lightning Shield") + 2)
+	p:Add(UI.Section(p, p.y - 4, "Shield") + 2)
+	p:Add(select(2, UI.Cycle(p, p.y, "Shield to keep up", ns.SHIELD_CHOICES,
+		function() return ns.db.shieldChoice end,
+		function(v) ns.db.shieldChoice = v; ns.UpdateBuffTimers() end,
+		function()
+			local s = ns.ShieldSpell()
+			return s and ("Now: " .. s) or (ns.ShieldLabel() .. " isn't learned yet.")
+		end)) + 8)
 	local third = math.floor(W / 3)
 	UI.DBToggle(p, 0, p.y, third, "shield", "Show")
 	UI.DBToggle(p, third, p.y, third, "shieldSound", "Sound")

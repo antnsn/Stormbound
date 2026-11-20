@@ -54,13 +54,13 @@ function M:Update()
 	if ns.db.imbue and spell and HasWeapon() and not ns.InCombat() then
 		local left, unknown = ns.ImbueLeft()
 		if not left and not unknown then
-			show, status, urgent = true, "Missing: click to cast", true
+			show, status, urgent = true, "Missing: click for " .. spell, true
 		elseif left and left <= ns.db.imbueMinutes * 60 then
-			show, status = true, Bound.FormatTime(left) .. " left"
+			show, status = true, Bound.FormatTime(left) .. " left: click for " .. spell
 		end
 	end
 	if show then
-		card:SetTitle(spell)
+		card:SetTitle("Weapon imbue")
 		card:SetStatus(status, urgent)
 		card:Show(); card:Glow(true)
 	else

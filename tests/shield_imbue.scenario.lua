@@ -25,7 +25,8 @@ else
 	wb.check(T.macroFor("Lightning Shield"), "clicking it casts Lightning Shield")
 	wb.expect("imbue card", imbue, true)
 	local want = m == "choice" and "Rockbiter Weapon" or "Flametongue Weapon" -- auto: best known
-	wb.expect("names the imbue", wb.frame("StormboundImbueFrame").titleText:GetText(), want)
+	wb.expect("titled Weapon imbue", wb.frame("StormboundImbueFrame").titleText:GetText(), "Weapon imbue")
+	wb.check(wb.frame("StormboundImbueFrame").statusText:GetText():find(want, 1, true), "the status names the imbue")
 	wb.check(T.macroFor(want), "and casts it")
 	if m == "expiring" then
 		wb.check(wb.frame("StormboundImbueFrame").statusText:GetText():find("left"), "time left shown")
@@ -38,4 +39,21 @@ else
 		wb.expect("back after", wb.shown("StormboundImbueFrame"), true)
 		wb.check(T.macroFor("Flametongue Weapon"), "clickable again after combat")
 	end
+end
+
+-- the shield choice
+if m == "missing" then
+	wb.ns.db.shieldChoice = "Water"
+	wb.ns.UpdateBuffTimers()
+	wb.advance(2)
+	wb.expect("water shield not learned: no card", wb.shown("StormboundShieldFrame"), false)
+	wb.state.spells[24398] = "Water Shield"
+	wb.fire("SPELLS_CHANGED")
+	wb.advance(2)
+	wb.expect("learned: the card asks for it", wb.shown("StormboundShieldFrame"), true)
+	wb.expect("named Water Shield", wb.frame("StormboundShieldFrame").titleText:GetText(), "Water Shield")
+	wb.check(T.macroFor("Water Shield"), "and casts it")
+	wb.setAuras({ wb.aura("Water Shield", 24398, 600, 3) })
+	wb.advance(2)
+	wb.expect("gone once it is up", wb.shown("StormboundShieldFrame"), false)
 end

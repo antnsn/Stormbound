@@ -1,6 +1,7 @@
 -- The totem bar: one slot per element (Earth, Fire, Water, Air) with the totem that stands and its
--- time left, faded when none. Left-click drops the last totem of that element again, right-click
--- removes it (secure "destroytotem"). The buttons are secure: their spell is set out of combat
+-- time left, faded when none. Left-click drops that element's totem: the one picked (options, or
+-- the mouse wheel over the button) or else the last one used; right-click removes it (secure
+-- "destroytotem"). The buttons are secure: their spell is set out of combat
 -- only (they keep the last one through a fight), and the bar shows or hides out of combat only.
 -- When Forever hides totem data in combat, a slot shows its icon without a timer.
 local _, ns = ...
@@ -29,6 +30,28 @@ function ns.ElementKnown(key)
 	return false
 end
 
+-- the element's totems the shaman knows, by name, in the data's order
+function ns.KnownTotems(key)
+	local out = {}
+	for _, id in ipairs(D.elements[key].spells) do
+		local ok, k = pcall(IsPlayerSpell, id)
+		if ok and not ns.IsSecret(k) and k then
+			local n = ns.SpellName(id)
+			if n then out[#out + 1] = n end
+		end
+	end
+	return out
+end
+
+-- the totem a button drops: the chosen one while it is known, else the last one used
+function ns.TotemFor(key)
+	local choice = ns.db.totemChoice[key]
+	if choice then
+		for _, n in ipairs(ns.KnownTotems(key)) do if n == choice then return n end end
+	end
+	return ns.db.lastTotem[key]
+end
+
 -- what stands in a slot: name, icon, time left; secret = the client hides it right now
 function ns.TotemIn(slot)
 	local ok, have, name, start, duration, icon = pcall(GetTotemInfo, slot)
@@ -53,8 +76,11 @@ local function Tooltip(self)
 		GameTooltip:AddLine(ns.Help.totems, 1, 1, 1, true)
 		GameTooltip:AddLine(ns.Help.totemButton, 0.6, 0.75, 1, true)
 	end
-	local last = ns.db.lastTotem[e.key]
-	GameTooltip:AddLine(last and ("Left-click: " .. last) or "Drop a totem once: this button remembers it.", 0.8, 0.8, 0.8, true)
+	local drop = ns.TotemFor(e.key)
+	local how = ns.db.totemChoice[e.key] and "chosen" or "last used"
+	GameTooltip:AddLine(drop and ("Left-click: " .. drop .. " (" .. how .. ")") or "Drop a totem once: this button remembers it.",
+		0.8, 0.8, 0.8, true)
+	GameTooltip:AddLine("Mouse wheel: pick which totem this button drops (out of combat).", 0.6, 0.6, 0.6, true)
 	GameTooltip:Show()
 end
 
@@ -82,6 +108,20 @@ local function Button(i, e)
 	b:SetAttribute("totem-slot", e.slot())
 	b:SetScript("OnEnter", Tooltip)
 	b:SetScript("OnLeave", function() GameTooltip:Hide() end)
+	-- the wheel steps through "last used" and the element's known totems (out of combat)
+	b:EnableMouseWheel(true)
+	b:SetScript("OnMouseWheel", function(self, delta)
+		if InCombatLockdown() or ns.unlocked then return end
+		local list = { false }
+		for _, n in ipairs(ns.KnownTotems(e.key)) do list[#list + 1] = n end
+		local cur = ns.db.totemChoice[e.key] or false
+		local idx = 1
+		for i, v in ipairs(list) do if v == cur then idx = i end end
+		idx = (idx - 1 - delta) % #list + 1
+		ns.db.totemChoice[e.key] = list[idx] or nil
+		M:Update()
+		if GameTooltip:IsOwned(self) then Tooltip(self) end
+	end)
 	return b
 end
 
@@ -92,11 +132,16 @@ local function SyncSecure()
 	for _, b in ipairs(buttons) do
 		local e = b.element
 		if ns.ElementKnown(e.key) then any = true end
-		local last = ns.db.lastTotem[e.key]
-		b:SetAttribute("type1", last and "spell" or nil)
-		b:SetAttribute("spell1", last)
+		local drop = ns.TotemFor(e.key)
+		b:SetAttribute("type1", drop and "spell" or nil)
+		b:SetAttribute("spell1", drop)
 	end
 	bar:SetShown(ns.db.totems and (any or ns.unlocked))
+end
+
+function ns.TotemIcon(name)
+	local ok, t = pcall(C_Spell.GetSpellTexture, name)
+	return ok and ns.Clean(t) or nil
 end
 
 -- the looks: icon, timer, faded (safe in combat)
@@ -113,7 +158,10 @@ local function Paint()
 			b.timer:SetText(ns.db.totemTimers and (left >= 60 and ("%dm"):format(math.ceil(left / 60)) or ("%d"):format(left)) or "")
 			b.timer:SetTextColor(1, left <= 10 and 0.55 or 1, left <= 10 and 0.4 or 1)
 		else
-			b.icon:SetTexture(b.lastIcon or e.icon); b.icon:SetDesaturated(true); b.icon:SetAlpha(0.55)
+			-- nothing stands: show what a click would drop
+			local chosen = ns.db.totemChoice[e.key]
+			local icon = chosen and ns.TotemIcon(chosen) or b.lastIcon or e.icon
+			b.icon:SetTexture(icon); b.icon:SetDesaturated(true); b.icon:SetAlpha(0.55)
 			b.timer:SetText("")
 		end
 	end

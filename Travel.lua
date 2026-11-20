@@ -8,10 +8,20 @@ local function Known(id)
 	return ok and not ns.IsSecret(k) and k and true or false
 end
 
+-- Astral Recall, then the water spells (handy before a swim)
+local ROWS = {
+	{ key = "astralRecall", label = "Astral Recall", level = 30, help = "recall" },
+	{ key = "waterBreathing", label = "Water Breathing", level = 22, help = "waterBreathing" },
+	{ key = "waterWalking", label = "Water Walking", level = 28, help = "waterWalking" },
+}
 function ns.TravelRows()
-	local id = ns.DATA.astralRecall
-	return { { spell = id, label = "Astral Recall", column = 1, known = Known(id), level = 30,
-		tip = "Astral Recall", help = ns.Help.recall, learn = "from a shaman trainer" } }
+	local out = {}
+	for _, r in ipairs(ROWS) do
+		local id = ns.DATA[r.key]
+		out[#out + 1] = { spell = id, label = r.label, column = 1, known = Known(id), level = r.level,
+			tip = r.label, help = ns.Help[r.help], learn = "from a shaman trainer" }
+	end
+	return out
 end
 
 Bound.InstallTravel(ns, {

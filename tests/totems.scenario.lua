@@ -1,7 +1,7 @@
---@moods: fresh drop secret expire
+--@moods: fresh drop secret expire choice
 local T = dofile(wb.dir .. "/tests/_shaman.lua")
 local m = wb.mood
-T.shaman(m == "fresh" and {} or { 8071, 3599 })
+T.shaman(m == "fresh" and {} or { 8071, 3599, 8075, 5730 })
 if m == "secret" then wb.state.secretTotems = true end
 wb.login()
 wb.advance(2)
@@ -46,4 +46,43 @@ if m == "expire" then
 	wb.expect("gone: no timer", earth.timer:GetText(), "")
 	wb.expect("faded", earth.icon.__desaturated or earth.icon:GetAlpha() < 1, true)
 	wb.expect("still recasts it", earth:GetAttribute("spell1"), "Stoneskin Totem")
+end
+
+if m == "choice" then
+	-- pick Strength of Earth with the mouse wheel: the button drops it instead of the last one
+	earth.__scripts.OnMouseWheel(earth, -1) -- "last used" -> first known
+	earth.__scripts.OnMouseWheel(earth, -1) -- -> second known
+	local known = wb.ns.KnownTotems("earth")
+	wb.expect("earth totems known", table.concat(known, ", "), "Stoneskin Totem, Strength of Earth Totem, Stoneclaw Totem")
+	wb.expect("the wheel picks", wb.saved("StormboundDB").totemChoice.earth, "Strength of Earth Totem")
+	wb.expect("the button drops the pick", earth:GetAttribute("spell1"), "Strength of Earth Totem")
+	wb.dropTotem(2, "Stoneclaw Totem", 15)
+	wb.advance(1)
+	wb.expect("a different totem dropped by hand doesn't change the pick", earth:GetAttribute("spell1"), "Strength of Earth Totem")
+	for _ = 1, 2 do earth.__scripts.OnMouseWheel(earth, -1) end -- Stoneclaw, then around to "last used"
+	wb.expect("back to last used", wb.saved("StormboundDB").totemChoice.earth, nil)
+	wb.expect("the button drops the last one again", earth:GetAttribute("spell1"), "Stoneclaw Totem")
+	wb.combat(true)
+	earth.__scripts.OnMouseWheel(earth, -1)
+	wb.expect("no changes in combat", wb.saved("StormboundDB").totemChoice.earth, nil)
+	wb.combat(false)
+end
+if m == "choice" then
+	-- the options' totem list follows what is learned, without a reload
+	wb.slash("/storm")
+	wb.slash("/storm")
+	wb.state.spells[8143] = "Tremor Totem"
+	wb.fire("SPELLS_CHANGED")
+	wb.slash("/storm") -- reopen
+	local found = false
+	for _, c in ipairs(wb.ns.optionsState.controls) do
+		if c.Sync and c.GetText then
+			local t = c.__text or ""
+			if t:find("Last used", 1, true) or t:find("Totem", 1, true) then found = true end
+		end
+	end
+	wb.check(found, "the totem selectors are there")
+	local list = {}
+	for _, n in ipairs(wb.ns.KnownTotems("earth")) do list[#list + 1] = n end
+	wb.check(table.concat(list, ","):find("Tremor Totem", 1, true), "a newly learned totem is known")
 end
