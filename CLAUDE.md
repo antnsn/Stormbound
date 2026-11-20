@@ -25,6 +25,8 @@ Changes go through pull requests that Claude opens and merges itself:
 `gh pr merge --squash --delete-branch`. Releases: tag on main, `wowbench pack . --set-version X`,
 `gh release create vX dist/Stormbound-X.zip`.
 
+CurseForge: `CURSEFORGE.md` is the project page (pasted by hand) and `Stormbound.png` its picture (made by `tools/make_media.py`). Before a release: write the version in `CHANGELOG.md`, run `python3 tools/sync_curseforge.py` (it copies the changelog to the bottom of the page).
+
 ## Issues
 
 Beads (`bd`). There is no Dolt remote: skip `bd dolt push`.

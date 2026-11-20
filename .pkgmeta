@@ -1,4 +1,10 @@
 package-as: Stormbound
+
+# CurseForge shows this file as the changelog of each release (newest version on top)
+manual-changelog:
+  filename: CHANGELOG.md
+  markup-type: markdown
+
 ignore:
   - docs
   - tests
@@ -9,3 +15,6 @@ ignore:
   - AGENTS.md
   - .beads
   - .claude
+  - CURSEFORGE.md
+  - Stormbound.png
+  - README.md
