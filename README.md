@@ -41,3 +41,8 @@ wowbench check . && wowbench test .
 wowbench pack . --set-version 0.1.0
 python3 tools/make_media.py
 ```
+
+## License
+
+GPL-3.0-or-later: GNU General Public License, version 3 or (at your option) any later
+version; see [LICENSE](LICENSE). LibBound-1.0 (in `Libs/LibBound`) is MIT, see its own LICENSE.
