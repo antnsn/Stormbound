@@ -1,5 +1,5 @@
 <!-- summary (CurseForge "Summary" field, at most 256 characters):
-Shaman helper for WoW: Forever: a totem bar with timers, reminders for your shield and weapon imbue, warnings before totem items or Ankhs run out, and Astral Recall beside the Escape menu. Explained in plain words.
+Shaman helper for WoW: Forever: a totem bar with timers, reminders for your shield and weapon imbue, warnings before totem items or Ankhs run out, and Astral Recall beside the Escape menu.
 -->
 
 # Stormbound
