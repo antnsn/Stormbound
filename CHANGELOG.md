@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.0 beta 4
+
+- **New icon**: hand-painted class art for the icon, the emblem and the faint crest behind the cards.
+
 ## 0.1.0 beta 3
 
 - **New look**: a painted icon and emblem, and a faint class crest behind every card and in the corner of the options window and the travel panel (the Blizzard and Flat skins stay plain).
