@@ -6,7 +6,7 @@ Shaman helper for WoW: Forever: a totem bar with timers, reminders for your shie
 
 **The shaman helper for World of Warcraft: Forever: a totem bar, your shield and weapon imbue, reagents, and Astral Recall one Escape away.**
 
-Stormbound gives you one button per element with the totem that stands and its time left, keeps your shield and weapon imbue up, and warns you before a missing totem item or Ankh catches you out. Everything is explained in plain words, so it's easy for a new shaman and still handy for an old one.
+Stormbound gives you one button per element with the totem that stands and its time left, keeps your shield and weapon imbue up, and warns you before a missing totem item or Ankh catches you out.
 
 **Beta:** Stormbound is new. Spell IDs come from Classic and are checked on Forever before 0.1.0; tell us what doesn't work.
 
