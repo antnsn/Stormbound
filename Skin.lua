@@ -68,6 +68,7 @@ local storm = {
 		glowEdge = { 0.85, 0.90, 1, 1 },
 		iconEdge = { 0.62, 0.74, 1, 0.9 },
 		frost = "Cloud", frostTint = { 0.62, 0.68, 0.90, 0.16 },
+		crest = "Crest", crestTint = { 0.62, 0.74, 1, 0.18 },
 		shards = "Fork", shardTint = { 0.86, 0.92, 1, 0.95 },
 		rim = "Rim", breathe = true, breatheTime = 3.4,
 		burst = false, studs = false, ring = false, round = false,
