@@ -1,3 +1,5 @@
+<p align="center"><img src="Stormbound.png" width="180" alt="Stormbound"></p>
+
 # Stormbound
 
 A shaman helper for **WoW: Forever**, part of the Bound family (Lightbound for paladins,
