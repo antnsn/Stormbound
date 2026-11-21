@@ -2,8 +2,8 @@
 
 # Stormbound
 
-A shaman helper for **WoW: Forever**, part of the Bound family (Lightbound for paladins,
-Chronobound for mages). For shamans who play with friends, and easy for new ones.
+A shaman helper for **WoW: Forever**, part of the Bound family: one addon per class on the same
+core (Lightbound, Chronobound, Stormbound, Packbound, Spiritbound, Felbound, Dreambound).
 
 - **Totem bar**: one button per element (Earth, Fire, Water, Air) with the totem that stands and
   its time left. Left-click drops the last totem of that element again, right-click removes it.
