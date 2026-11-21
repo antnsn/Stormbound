@@ -34,40 +34,48 @@ end
 local function ShieldPage(UI)
 	local p = UI.NewPage("Shield & imbue", "Your shield and your weapon imbue. Click a card to cast (out of combat).")
 	local W = UI.CONTENT_W
-	p:Add(UI.Section(p, p.y - 4, "Shield") + 2)
-	p:Add(select(2, UI.Cycle(p, p.y, "Shield to keep up", ns.SHIELD_CHOICES,
+	p:Add(UI.Section(p, p.y - 4, "Shield"))
+	p:Add(select(2, UI.Cycle(p, p.y, "Shield to track", ns.SHIELD_TRACK_CHOICES,
+		function() return ns.db.shieldTrack end,
+		function(v) ns.db.shieldTrack = v; ns.UpdateBuffTimers() end)) - 8)
+	p:Add(select(2, UI.Cycle(p, p.y, "Shield to cast", ns.SHIELD_CHOICES,
 		function() return ns.db.shieldChoice end,
 		function(v) ns.db.shieldChoice = v; ns.UpdateBuffTimers() end,
 		function()
 			local s = ns.ShieldSpell()
 			return s and ("Now: " .. s) or (ns.ShieldLabel() .. " isn't learned yet.")
-		end)) + 8)
+		end)) + 2)
 	local third = math.floor(W / 3)
 	UI.DBToggle(p, 0, p.y, third, "shield", "Show")
 	UI.DBToggle(p, third, p.y, third, "shieldSound", "Sound")
 	UI.DBToggle(p, third * 2, p.y, third, "shieldKeep", "When missing", nil, function() ns.UpdateBuffTimers() end)
 	p:Add(32)
-	p:Add(select(2, UI.Slider(p, p.y, "Warn with time left", "shieldMinutes", 1, 10, 1, " min")) + 8)
-	p:Add(UI.Section(p, p.y - 4, "Weapon imbue") + 2)
-	p:Add(select(2, UI.DBToggle(p, 0, p.y, W, "imbue", "Show when your main hand has no imbue")) + 6)
+	p:Add(select(2, UI.Slider(p, p.y, "Warn with time left", "shieldMinutes", 1, 10, 1, " min")) + 2)
+	p:Add(UI.Section(p, p.y - 4, "Weapon imbue"))
+	p:Add(select(2, UI.DBToggle(p, 0, p.y, W, "imbue", "Show main-hand imbue reminders")))
+	p:Add(select(2, UI.Cycle(p, p.y, "Imbue to track", ns.IMBUE_TRACK_CHOICES,
+		function() return ns.db.imbueTrack end,
+		function(v) ns.db.imbueTrack = v end)) - 8)
 	p:Add(select(2, UI.Cycle(p, p.y, "Imbue to cast", ns.IMBUE_CHOICES,
 		function() return ns.db.imbueChoice end,
 		function(v) ns.db.imbueChoice = v end,
 		function()
 			local s = ns.ImbueSpell()
 			return s and ("Now: " .. s) or "No imbue learned yet (Rockbiter comes at level 1)."
-		end)) + 8)
-	p:Add(select(2, UI.Slider(p, p.y, "Warn with time left", "imbueMinutes", 1, 5, 1, " min")) + 8)
+		end)) + 2)
+	p:Add(select(2, UI.Slider(p, p.y, "Warn with time left", "imbueMinutes", 1, 5, 1, " min")) + 2)
 end
 
 local function ReagentPage(UI)
-	local p = UI.NewPage("Totems & Ankhs", "The items a shaman needs in the bags.")
+	local p = UI.NewPage("Reagents", "Choose which items to track in your bags.")
 	local W = UI.CONTENT_W
 	p:Add(select(2, UI.DBToggle(p, 0, p.y, W, "totemItems", "Warn when a totem item is missing",
 		"Earth, Fire, Water and Air Totem: without one, that element's totems can't be dropped.")) + 8)
-	p:Add(select(2, UI.DBToggle(p, 0, p.y, W, "ankhs", "Warn when Ankhs run low",
-		"Once you know Reincarnation (level 30).")) + 6)
-	p:Add(select(2, UI.Slider(p, p.y, "Ankhs: warn at", "ankhLow", 0, 10, 1, " left")) + 8)
+	for _, r in ipairs(ns.REAGENT_TRACKERS) do
+		p:Add(select(2, UI.DBToggle(p, 0, p.y, W, r.key, "Track " .. r.label,
+			"For " .. r.spellName .. ", once learned.")) + 6)
+		p:Add(select(2, UI.Slider(p, p.y, r.label .. ": warn at", r.low, 0, r.max, 1, " left")) + 8)
+	end
 end
 
 local function TravelPage(UI)

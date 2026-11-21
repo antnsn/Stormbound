@@ -2,7 +2,7 @@
 title: Travel panel
 parent: Features
 nav_order: 5
-description: Astral Recall, Water Breathing, Water Walking and your Hearthstone beside the Escape menu.
+description: Astral Recall and your Hearthstone beside the Escape menu.
 ---
 
 # Travel panel
@@ -13,10 +13,10 @@ Press Escape, and beside the game menu a small panel lists your shaman's travel 
 
 ## What it does
 
-- Under **SHAMAN**: **Astral Recall**, **Water Breathing** and **Water Walking**.
-- Below them, your **Hearthstone**, with the inn it is set to.
+- Under **SHAMAN**: **Astral Recall**.
+- Below it, your **Hearthstone**, with the inn it is set to.
 - Click a row to cast it. The game menu closes after the cast.
-- A spell you haven't learned yet is grayed out, with the level you need: Astral Recall at 30, Water Breathing at 22, Water Walking at 28. Its tooltip says where to learn it.
+- Astral Recall is grayed out until you learn it at level 30. Its tooltip says where to learn it.
 - The Hearthstone row only shows while the Hearthstone is in your bags.
 
 ## How to use it
@@ -39,4 +39,4 @@ In `/storm`, page **Travel**:
 **Not in combat.**
 The panel hides when a fight starts, and doesn't open with the menu in combat. Travel spells can't be cast in combat anyway.
 
-**Water Breathing and Water Walking need reagents.** Water Walking uses a Fish Oil, Water Breathing a Shiny Fish Scale.
+**Only Astral Recall and Hearthstone.** Water Breathing and Water Walking are not included in this panel.

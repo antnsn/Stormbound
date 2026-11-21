@@ -11,9 +11,9 @@ Stormbound does a few shaman jobs for you. Each page below covers one of them: w
 
 - [Totem bar](totem-bar.html): one button per element, with the totem that stands and its time left.
 - [Shield and weapon imbue](shield-and-imbue.html): cards when your shield or main-hand imbue is missing or running out. Click to cast.
-- [Totem items and Ankhs](totem-items-and-ankhs.html): warnings for a missing totem item and for low Ankhs.
+- [Reagents](totem-items-and-ankhs.html): missing totem items and selectable low-stock reminders for Ankhs, Fish Oil and Shiny Fish Scales.
 - [Buff key](buff-key.html): one key that casts what the shield and imbue cards ask for.
-- [Travel panel](travel.html): Astral Recall, the water spells and your Hearthstone beside the Escape menu.
+- [Travel panel](travel.html): Astral Recall and your Hearthstone beside the Escape menu.
 - [Well-Rested and Well Fed](well-rested-and-well-fed.html): a warning and a countdown before they run out.
 - [Explanations](explanations.html): tooltips that say what a card or button is for.
 - [Frames and minimap](frames-and-minimap.html): moving and resizing frames, the grid, and the minimap button.

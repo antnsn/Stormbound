@@ -8,11 +8,8 @@ local function Known(id)
 	return ok and not ns.IsSecret(k) and k and true or false
 end
 
--- Astral Recall, then the water spells (handy before a swim)
 local ROWS = {
 	{ key = "astralRecall", label = "Astral Recall", level = 30, help = "recall" },
-	{ key = "waterBreathing", label = "Water Breathing", level = 22, help = "waterBreathing" },
-	{ key = "waterWalking", label = "Water Walking", level = 28, help = "waterWalking" },
 }
 function ns.TravelRows()
 	local out = {}

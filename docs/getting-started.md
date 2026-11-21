@@ -31,7 +31,7 @@ Stormbound only loads on shamans. On another class, `/storm` says so, and the ad
 
 Type `/storm` in chat, or click the Stormbound button on your minimap.
 
-The options window has one page per feature on the left: **Totems**, **Shield & imbue**, **Totems & Ankhs**, **Travel**, **Extras** and **Skin**. Almost everything is on by default, so you mostly turn off what you don't want.
+The options window has one page per feature on the left: **Totems**, **Shield & imbue**, **Reagents**, **Travel**, **Extras** and **Skin**. Most reminders are on by default; Fish Oil and Shiny Fish Scales tracking is optional.
 
 ## 3. Drop your totems once
 
