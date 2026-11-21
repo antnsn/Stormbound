@@ -5,6 +5,6 @@ max_line_length = false
 ignore = { "212", "432" }
 exclude_files = { "Libs/", "tests/", "tools/" }
 read_globals = {
-	"C_Item", "C_Spell", "CreateFrame", "GameMenuFrame", "GameTooltip", "GetBindLocation", "HideUIPanel",
+	"C_Item", "C_Spell", "C_UnitAuras", "CreateFrame", "GameMenuFrame", "GameTooltip", "GetBindLocation", "HideUIPanel",
 	"AIR_TOTEM_SLOT", "EARTH_TOTEM_SLOT", "FIRE_TOTEM_SLOT", "WATER_TOTEM_SLOT", "GetTotemInfo", "GetWeaponEnchantInfo", "GetInventoryItemID", "GetTime", "C_Timer", "InCombatLockdown", "IsPlayerSpell", "LibStub", "UIParent",
 }

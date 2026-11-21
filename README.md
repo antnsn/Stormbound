@@ -16,6 +16,8 @@ Full guide with screenshots: https://antnsn.github.io/Stormbound/
   separately, or use Auto (Windfury, Flametongue, Rockbiter).
 - **Totem choice**: pick which totem each button drops (options, or the mouse wheel over the
   button), or let it drop the last one used.
+- **Maelstrom Weapon**: a movable stack counter that shows 1-4 stacks and blinks at 5,
+  including in combat. Toggle it on the Maelstrom options page.
 - **Reagents**: warns for missing totem items and low Ankhs. Optionally track Fish Oil for Water
   Walking and Shiny Fish Scales for Water Breathing, with a separate toggle and limit for each.
 - **Travel**: press Escape, and beside the game menu you get Astral Recall and your Hearthstone.

@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Track Maelstrom Weapon stacks on a movable card: show 1-4 stacks and blink at 5, including
+  in combat when the client exposes the aura. Toggle it on the new Maelstrom options page.
 - Add optional Fish Oil (Water Walking) and Shiny Fish Scales (Water Breathing) reminders.
   The Reagents options page has separate toggles and low-stock limits for these items and Ankhs.
 - The Escape-menu travel panel now contains only Astral Recall and Hearthstone.

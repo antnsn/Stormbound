@@ -11,6 +11,7 @@ Stormbound does a few shaman jobs for you. Each page below covers one of them: w
 
 - [Totem bar](totem-bar.html): one button per element, with the totem that stands and its time left.
 - [Shield and weapon imbue](shield-and-imbue.html): cards when your shield or main-hand imbue is missing or running out. Click to cast.
+- [Maelstrom Weapon](maelstrom.html): a stack counter that blinks when all five stacks are ready.
 - [Reagents](totem-items-and-ankhs.html): missing totem items and selectable low-stock reminders for Ankhs, Fish Oil and Shiny Fish Scales.
 - [Buff key](buff-key.html): one key that casts what the shield and imbue cards ask for.
 - [Travel panel](travel.html): Astral Recall and your Hearthstone beside the Escape menu.

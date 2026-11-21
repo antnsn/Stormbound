@@ -13,7 +13,7 @@ Put every Stormbound frame exactly where you want it, and open the options from 
 
 ### Moving and resizing frames
 
-- Unlocking shows **every** Stormbound frame, with sample content, so you can place frames that are normally hidden: the totem bar, the shield, Weapon imbue, totem items, Ankhs, Fish Oil, Shiny Fish Scales, Well-Rested and Well Fed cards.
+- Unlocking shows **every** Stormbound frame, with sample content, so you can place frames that are normally hidden: the totem bar, the shield, Weapon imbue, Maelstrom Weapon, totem items, Ankhs, Fish Oil, Shiny Fish Scales, Well-Rested and Well Fed cards.
 - Drag a frame to move it. Frames snap to a grid around the center of your screen. Hold **Shift** while dragging to place a frame freely.
 - Scroll the **mouse wheel** over a frame to make it bigger or smaller (50% to 250%).
 - While unlocked, a small bar at the top of the screen sets the grid size (**-** and **+**, or the mouse wheel; hold Shift for 1 pixel steps), turns **Snap** on or off, and has a **Lock** button.
