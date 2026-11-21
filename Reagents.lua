@@ -1,11 +1,21 @@
--- Totem items and Ankhs: a card when an element's totem item is missing from the bags (without it
--- that element's totems can't be dropped; new shamans lose them), and one when Ankhs run low once
--- Reincarnation is known. Quiet in combat.
+-- Missing totem items and low spell reagents. Each consumable has its own toggle and limit.
+-- Only warn for learned spells, and stay quiet in combat.
 local _, ns = ...
 if ns.disabled then return end
 local D = ns.DATA
 
 local ORDER = { "earth", "fire", "water", "air" }
+local REAGENTS = {
+	{ key = "ankhs", low = "ankhLow", label = "Ankhs", item = D.ankh, spell = D.reincarnation,
+		spellName = "Reincarnation", name = "Ankh", point = "akPoint", icon = 136080, help = ns.Help.ankh, max = 10 },
+	{ key = "fishOil", low = "fishOilLow", label = "Fish Oil", item = D.fishOil, spell = D.waterWalking,
+		spellName = "Water Walking", name = "FishOil", point = "foPoint",
+		icon = "Interface\\Icons\\INV_Potion_64", help = ns.Help.waterWalking, max = 20 },
+	{ key = "fishScales", low = "fishScalesLow", label = "Shiny Fish Scales", item = D.fishScales, spell = D.waterBreathing,
+		spellName = "Water Breathing", name = "FishScales", point = "fsPoint",
+		icon = "Interface\\Icons\\INV_Misc_MonsterScales_08", help = ns.Help.waterBreathing, max = 20 },
+}
+ns.REAGENT_TRACKERS = REAGENTS
 
 local function Count(id)
 	local ok, n = pcall(C_Item.GetItemCount, id)
@@ -29,13 +39,16 @@ end
 
 local M = {}
 ns.modules[#ns.modules + 1] = M
-local items, ankh
+local items
+local cards = {}
 
 function M:Update()
 	if not items then return end
 	if ns.unlocked then
 		items:SetStatus("Air Totem"); items:Show(); items:Glow(false)
-		ankh:SetStatus("1 left"); ankh:Show(); ankh:Glow(false)
+		for _, card in ipairs(cards) do
+			card:SetStatus("1 left"); card:Show(); card:Glow(false)
+		end
 		return
 	end
 	local quiet = ns.InCombat()
@@ -47,12 +60,14 @@ function M:Update()
 	else
 		items:Glow(false); items:Hide()
 	end
-	local n = Count(D.ankh)
-	if ns.db.ankhs and Known(D.reincarnation) and n <= ns.db.ankhLow and not quiet then
-		ankh:SetStatus(n == 0 and "None left: Reincarnation can't be used" or (n .. " left"), n == 0)
-		ankh:Show(); ankh:Glow(true)
-	else
-		ankh:Glow(false); ankh:Hide()
+	for i, r in ipairs(REAGENTS) do
+		local card, n = cards[i], Count(r.item)
+		if ns.db[r.key] and Known(r.spell) and n <= ns.db[r.low] and not quiet then
+			card:SetStatus(n == 0 and ("None left: " .. r.spellName .. " can't be used") or (n .. " left"), n == 0)
+			card:Show(); card:Glow(true)
+		else
+			card:Glow(false); card:Hide()
+		end
 	end
 end
 
@@ -62,11 +77,14 @@ function M:Init()
 	items:SetTitle("Totem items missing")
 	items:SetExplain(ns.Help.totemItem)
 	ns.MakeMovable(items, "tiPoint"); ns.ApplyPoint(items, "tiPoint")
-	ankh = ns.MakeCard("StormboundAnkhFrame")
-	ankh:SetIcon(136080)
-	ankh:SetTitle("Ankhs")
-	ankh:SetExplain(ns.Help.ankh)
-	ns.MakeMovable(ankh, "akPoint"); ns.ApplyPoint(ankh, "akPoint")
+	for i, r in ipairs(REAGENTS) do
+		local card = ns.MakeCard("Stormbound" .. r.name .. "Frame")
+		card:SetIcon(r.icon)
+		card:SetTitle(r.label)
+		card:SetExplain(r.help)
+		ns.MakeMovable(card, r.point); ns.ApplyPoint(card, r.point)
+		cards[i] = card
+	end
 	local f = CreateFrame("Frame")
 	for _, e in ipairs({ "BAG_UPDATE_DELAYED", "SPELLS_CHANGED", "PLAYER_REGEN_ENABLED", "PLAYER_REGEN_DISABLED",
 		"PLAYER_ENTERING_WORLD" }) do f:RegisterEvent(e) end

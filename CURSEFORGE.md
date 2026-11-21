@@ -21,8 +21,9 @@ Stormbound gives you one button per element with the totem that stands and its t
 - **Lightning, Water or Earth Shield**, your pick: a card when it's missing or about to run out. Click it to cast.
 - **Weapon imbue**: a card when your main hand has no imbue or it's running out. Click it to cast your best one (Windfury, Flametongue, Rockbiter), or the one you chose.
 
-## Totem items and Ankhs
+## Reagents
 - Says when an **Earth, Fire, Water or Air Totem** item is missing (without it that element's totems can't be dropped) and when **Ankhs** run low for Reincarnation.
+- In **Reagents** options, choose whether to track Ankhs, **Fish Oil** for Water Walking, and **Shiny Fish Scales** for Water Breathing. Each has its own low-stock limit; the two water-spell reminders start turned off.
 
 ## Travel
 - **Press Escape**: beside the game menu you get Astral Recall and your Hearthstone.

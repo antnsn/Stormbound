@@ -19,6 +19,8 @@ ns.DATA = {
 	waterBreathing = 131,
 	reincarnation = 20608,
 	ankh = 17030,
+	fishOil = 17058,
+	fishScales = 17057,
 	-- the totem item each element needs in the bags, and the element's totems (first rank):
 	-- a known one means the element is learned, and they are what a totem button can be set to
 	elements = {
@@ -46,8 +48,11 @@ ns.disabled = Bound:NewAddon(addonName, ns, {
 		totemChoice = {}, -- element -> totem name the button drops; none = the last one used
 		tbPoint = { "CENTER", "UIParent", "CENTER", 0, -230 },
 		totemItems = true, ankhs = true, ankhLow = 2,
+		fishOil = false, fishOilLow = 2, fishScales = false, fishScalesLow = 2,
 		tiPoint = { "CENTER", "UIParent", "CENTER", 250, 200 },
 		akPoint = { "CENTER", "UIParent", "CENTER", 250, 140 },
+		foPoint = { "CENTER", "UIParent", "CENTER", 250, 80 },
+		fsPoint = { "CENTER", "UIParent", "CENTER", 250, 20 },
 		travel = true,
 		wrPoint = { "CENTER", "UIParent", "CENTER", 0, 320 },
 		wfPoint = { "CENTER", "UIParent", "CENTER", 0, 260 },

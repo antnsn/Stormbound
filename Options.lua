@@ -67,13 +67,15 @@ local function ShieldPage(UI)
 end
 
 local function ReagentPage(UI)
-	local p = UI.NewPage("Totems & Ankhs", "The items a shaman needs in the bags.")
+	local p = UI.NewPage("Reagents", "Choose which items to track in your bags.")
 	local W = UI.CONTENT_W
 	p:Add(select(2, UI.DBToggle(p, 0, p.y, W, "totemItems", "Warn when a totem item is missing",
 		"Earth, Fire, Water and Air Totem: without one, that element's totems can't be dropped.")) + 8)
-	p:Add(select(2, UI.DBToggle(p, 0, p.y, W, "ankhs", "Warn when Ankhs run low",
-		"Once you know Reincarnation (level 30).")) + 6)
-	p:Add(select(2, UI.Slider(p, p.y, "Ankhs: warn at", "ankhLow", 0, 10, 1, " left")) + 8)
+	for _, r in ipairs(ns.REAGENT_TRACKERS) do
+		p:Add(select(2, UI.DBToggle(p, 0, p.y, W, r.key, "Track " .. r.label,
+			"For " .. r.spellName .. ", once learned.")) + 6)
+		p:Add(select(2, UI.Slider(p, p.y, r.label .. ": warn at", r.low, 0, r.max, 1, " left")) + 8)
+	end
 end
 
 local function TravelPage(UI)
