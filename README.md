@@ -5,6 +5,8 @@
 A shaman helper for **WoW: Forever**, part of the Bound family: one addon per class on the same
 core (Lightbound, Chronobound, Stormbound, Packbound, Spiritbound, Felbound, Dreambound).
 
+Full guide with screenshots: https://antnsn.github.io/Stormbound/
+
 - **Totem bar**: one button per element (Earth, Fire, Water, Air) with the totem that stands and
   its time left. Left-click drops the last totem of that element again, right-click removes it.
 - **Shield**: Lightning, Water or Earth Shield, your pick: a card when it is missing or about to
