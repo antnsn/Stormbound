@@ -4,6 +4,7 @@
 ## X-License: GPL-3.0-or-later
 ## Author: Rheolux
 ## Version: @project-version@
+## X-Curse-Project-ID: 1819694
 ## IconTexture: Interface\AddOns\Stormbound\Media\Icon64
 ## SavedVariables: StormboundDB
 
