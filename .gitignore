@@ -1,5 +1,6 @@
 /dist
 /Libs/LibBound/
+/Stormbound-*.zip
 
 # Beads / Dolt files (added by bd init)
 .dolt/
