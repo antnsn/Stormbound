@@ -8,7 +8,7 @@ Shaman helper for WoW: Forever: a totem bar with one button per element and its 
 
 Stormbound gives you one button per element with the totem that stands and its time left, keeps your shield and weapon imbue up, and warns you before a missing totem item or Ankh catches you out.
 
-**Full guide with screenshots: https://antnsn.github.io/Stormbound/**
+**Full guide with screenshots:** https://antnsn.github.io/Stormbound/
 
 **Beta:** Stormbound is new. Spell IDs come from Classic and are checked on Forever before 0.1.0; tell us what doesn't work.
 
