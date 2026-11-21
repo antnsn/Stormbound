@@ -17,6 +17,7 @@ Chronobound for mages). For shamans who play with friends, and easy for new ones
   that element's totems can't be dropped) and when Ankhs run low for Reincarnation.
 - **Travel**: press Escape, and beside the game menu you get Astral Recall, Water Breathing,
   Water Walking and your Hearthstone.
+- **Buff key** (Extras page): out of combat, each press casts the next thing a card asks for.
 - **Well-Rested and Well Fed** timers, plain-word explanations in tooltips, movable frames
   (`/storm unlock`), three skins (Storm, Blizzard, Flat).
 
