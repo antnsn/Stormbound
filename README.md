@@ -18,8 +18,7 @@ Full guide with screenshots: https://antnsn.github.io/Stormbound/
   button), or let it drop the last one used.
 - **Totem items and Ankhs**: says when an Earth/Fire/Water/Air Totem item is missing (without it
   that element's totems can't be dropped) and when Ankhs run low for Reincarnation.
-- **Travel**: press Escape, and beside the game menu you get Astral Recall, Water Breathing,
-  Water Walking and your Hearthstone.
+- **Travel**: press Escape, and beside the game menu you get Astral Recall and your Hearthstone.
 - **Buff key** (Extras page): out of combat, each press casts the next thing a card asks for.
 - **Well-Rested and Well Fed** timers, plain-word explanations in tooltips, movable frames
   (`/storm unlock`), three skins (Storm, Blizzard, Flat).

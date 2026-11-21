@@ -3,6 +3,7 @@ local M = {}
 local NAMES = {
 	[324] = "Lightning Shield", [325] = "Lightning Shield", [24398] = "Water Shield", [974] = "Earth Shield",
 	[33736] = "Water Shield", [408510] = "Water Shield",
+	[131] = "Water Breathing", [546] = "Water Walking",
 	[8017] = "Rockbiter Weapon", [8024] = "Flametongue Weapon", [8033] = "Frostbrand Weapon", [8232] = "Windfury Weapon",
 	[8071] = "Stoneskin Totem", [3599] = "Searing Totem", [5394] = "Healing Stream Totem", [8177] = "Grounding Totem",
 	[8075] = "Strength of Earth Totem", [5730] = "Stoneclaw Totem",

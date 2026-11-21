@@ -25,7 +25,7 @@ Stormbound gives you one button per element with the totem that stands and its t
 - Says when an **Earth, Fire, Water or Air Totem** item is missing (without it that element's totems can't be dropped) and when **Ankhs** run low for Reincarnation.
 
 ## Travel
-- **Press Escape**: beside the game menu you get Astral Recall, Water Breathing, Water Walking and your Hearthstone.
+- **Press Escape**: beside the game menu you get Astral Recall and your Hearthstone.
 
 ## Also in it
 - **Buff key** (Extras page): out of combat, each press casts the next thing a card asks for.

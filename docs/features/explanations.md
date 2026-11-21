@@ -16,7 +16,7 @@ Explanations show in the tooltips of:
 - the [totem bar](totem-bar.html) buttons: what totems do, and what left- and right-click do;
 - the [shield and Weapon imbue](shield-and-imbue.html) cards: what each shield and imbue is for;
 - the [totem items and Ankhs](totem-items-and-ankhs.html) cards: why you need the item, and where Ankhs come from;
-- the [travel panel](travel.html) rows: what Astral Recall, the water spells and the Hearthstone do;
+- the [travel panel](travel.html) rows: what Astral Recall and the Hearthstone do;
 - the [Well-Rested and Well Fed](well-rested-and-well-fed.html) cards.
 
 For example, the totem items card says: "You need the element's totem item in your bags to drop its totems. Lost it? Ask a shaman trainer how to get a new one."
