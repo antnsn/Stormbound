@@ -15,7 +15,7 @@ Explanations show in the tooltips of:
 
 - the [totem bar](totem-bar.html) buttons: what totems do, and what left- and right-click do;
 - the [shield and Weapon imbue](shield-and-imbue.html) cards: what each shield and imbue is for;
-- the [totem items and Ankhs](totem-items-and-ankhs.html) cards: why you need the item, and where Ankhs come from;
+- the [reagent](totem-items-and-ankhs.html) cards: why you need totem items, Ankhs, Fish Oil and Shiny Fish Scales;
 - the [travel panel](travel.html) rows: what Astral Recall, the water spells and the Hearthstone do;
 - the [Well-Rested and Well Fed](well-rested-and-well-fed.html) cards.
 

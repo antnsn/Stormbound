@@ -31,7 +31,7 @@ Stormbound puts all of that in one addon. It shows your totems on one bar, remin
 
 - **Totem bar.** One button per element with the totem that stands and its time left. Left-click drops it, right-click removes it. [More](features/totem-bar.html)
 - **Shield and weapon imbue.** A card when your shield or main-hand imbue is missing or about to run out. Click it to cast. [More](features/shield-and-imbue.html)
-- **Totem items and Ankhs.** A card when an Earth, Fire, Water or Air Totem is missing from your bags, and when Ankhs run low. [More](features/totem-items-and-ankhs.html)
+- **Reagents.** Warnings for missing totem items and low Ankhs, plus optional Fish Oil and Shiny Fish Scales tracking. [More](features/totem-items-and-ankhs.html)
 - **Buff key.** One key that casts what the shield and imbue cards ask for. [More](features/buff-key.html)
 - **Travel panel.** Press Escape: Astral Recall, Water Breathing, Water Walking and your Hearthstone beside the game menu. [More](features/travel.html)
 - **Well-Rested and Well Fed.** A warning and a countdown before they run out. [More](features/well-rested-and-well-fed.html)

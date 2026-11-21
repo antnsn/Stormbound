@@ -9,14 +9,16 @@ Full guide with screenshots: https://antnsn.github.io/Stormbound/
 
 - **Totem bar**: one button per element (Earth, Fire, Water, Air) with the totem that stands and
   its time left. Left-click drops the last totem of that element again, right-click removes it.
-- **Shield**: Lightning, Water or Earth Shield, your pick: a card when it is missing or about to
-  run out. Click it to cast.
-- **Weapon imbue**: a card when your main hand has no imbue (or it's running out). Click it to
-  cast your best one (Windfury, Flametongue, Rockbiter), or the one you pick.
+- **Shield**: track Lightning, Water or Earth Shield, or accept **Any** shield. A card warns when
+  it is missing or about to run out. Choose the shield to cast separately.
+- **Weapon imbue**: track Windfury, Flametongue, Frostbrand or Rockbiter, or accept **Any**
+  main-hand enchant. The card warns when missing, different or running out. Choose what it casts
+  separately, or use Auto (Windfury, Flametongue, Rockbiter).
 - **Totem choice**: pick which totem each button drops (options, or the mouse wheel over the
   button), or let it drop the last one used.
-- **Totem items and Ankhs**: says when an Earth/Fire/Water/Air Totem item is missing (without it
-  that element's totems can't be dropped) and when Ankhs run low for Reincarnation.
+- **Reagents**: warns for missing totem items and low Ankhs. Optionally track Fish Oil for Water
+  Walking and Shiny Fish Scales for Water Breathing, with a separate toggle and limit for each.
+  Reagent and imbue reminders remain active in combat; click-to-cast works out of combat only.
 - **Travel**: press Escape, and beside the game menu you get Astral Recall, Water Breathing,
   Water Walking and your Hearthstone.
 - **Buff key** (Extras page): out of combat, each press casts the next thing a card asks for.

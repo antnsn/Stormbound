@@ -1,6 +1,6 @@
 ## Interface: 16001
 ## Title: Stormbound
-## Notes: Shaman helper: a totem bar with timers (click to recast, right-click to remove), Lightning Shield and weapon imbue reminders, totem items and Ankhs, Well Rested and Well Fed, Astral Recall on the Escape menu. /storm for options.
+## Notes: Shaman helper: totem timers, shield and weapon imbue reminders, totem items and spell reagents, Well Rested and Well Fed, Astral Recall on the Escape menu. /storm for options.
 ## X-License: GPL-3.0-or-later
 ## Author: Rheolux
 ## Version: @project-version@
