@@ -40,7 +40,7 @@ ns.disabled = Bound:NewAddon(addonName, ns, {
 		skin = "storm",
 		shield = true, shieldChoice = "Lightning", shieldMinutes = 1, shieldSound = false, shieldIcon = true, shieldKeep = true,
 		lsPoint = { "CENTER", "UIParent", "CENTER", -250, 200 },
-		imbue = true, imbueChoice = "Auto", imbueMinutes = 1,
+		imbue = true, imbueChoice = "Auto", imbueTrack = "Any", imbueMinutes = 1,
 		imPoint = { "CENTER", "UIParent", "CENTER", -250, 140 },
 		totems = true, totemTimers = true, lastTotem = {},
 		totemChoice = {}, -- element -> totem name the button drops; none = the last one used
@@ -52,4 +52,8 @@ ns.disabled = Bound:NewAddon(addonName, ns, {
 		wrPoint = { "CENTER", "UIParent", "CENTER", 0, 320 },
 		wfPoint = { "CENTER", "UIParent", "CENTER", 0, 260 },
 	},
+	migrate = function(db)
+		-- Older profiles tracked the shield chosen for casting.
+		if db.shieldTrack == nil then db.shieldTrack = db.shieldChoice end
+	end,
 })

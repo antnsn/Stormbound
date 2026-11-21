@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+- Separate **Shield to track** and **Imbue to track** settings from the spells the cards cast.
+- Track a specific shield or imbue, or choose **Any** to accept any shaman shield or main-hand
+  temporary weapon enchant. Specific imbue tracking warns when a different enchant is active.
+- Existing shield and cast preferences are kept; weapon tracking still defaults to Any.
+
 ## 0.1.0 beta 5
 
 - **Minimap button** works with minimap addons (EllesmereUI, SexyMap, ElvUI, MinimapButtonBag, broker bars): it is a LibDBIcon button now. Its place on the minimap is kept.

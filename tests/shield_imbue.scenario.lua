@@ -44,6 +44,7 @@ end
 -- the shield choice
 if m == "missing" then
 	wb.ns.db.shieldChoice = "Water"
+	wb.ns.db.shieldTrack = "Water"
 	wb.ns.UpdateBuffTimers()
 	wb.advance(2)
 	wb.expect("water shield not learned: no card", wb.shown("StormboundShieldFrame"), false)
