@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.1.0 beta 6
 
 - Reset invalid saved imbue-tracking choices to Any with a notification instead of failing.
 - Keep reagent and weapon-imbue reminders active during combat; clicking to cast still requires
@@ -13,6 +13,7 @@
   temporary weapon enchant. Specific imbue tracking warns when a different enchant is active.
 - Existing shield and cast preferences are kept; weapon tracking still defaults to Any.
 - Recognize Forever's Water Shield spell (408510), so its missing-shield reminder and click-to-cast work.
+- Built on the latest LibBound, the shared core of the Bound addons, with its small fixes. Published on CurseForge straight from GitHub now.
 
 ## 0.1.0 beta 5
 
