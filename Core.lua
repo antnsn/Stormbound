@@ -14,7 +14,6 @@ ns.DATA = {
 	flametongue = { 8024, 8027, 8030, 16339, 16341, 16342 },
 	frostbrand = { 8033, 8038, 10456, 16355, 16356 },
 	windfury = { 8232, 8235, 10486, 16362 },
-	maelstromWeapon = 408505,
 	astralRecall = 556,
 	waterWalking = 546,
 	waterBreathing = 131,
@@ -45,8 +44,6 @@ ns.disabled = Bound:NewAddon(addonName, ns, {
 		lsPoint = { "CENTER", "UIParent", "CENTER", -250, 200 },
 		imbue = true, imbueChoice = "Auto", imbueTrack = "Any", imbueMinutes = 1,
 		imPoint = { "CENTER", "UIParent", "CENTER", -250, 140 },
-		maelstrom = true,
-		mwPoint = { "CENTER", "UIParent", "CENTER", 0, -120 },
 		totems = true, totemTimers = true, lastTotem = {},
 		totemChoice = {}, -- element -> totem name the button drops; none = the last one used
 		tbPoint = { "CENTER", "UIParent", "CENTER", 0, -230 },

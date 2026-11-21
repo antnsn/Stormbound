@@ -1,6 +1,6 @@
 -- Weapon imbue card: the tracked imbue is missing or about to run out; click casts the chosen
 -- imbue (out of combat). "Auto" picks the best one known: Windfury, then Flametongue, then
--- Rockbiter (Frostbrand only when picked). Quiet in combat.
+-- Rockbiter (Frostbrand only when picked). Tracking stays active in combat; casting does not.
 local _, ns = ...
 if ns.disabled then return end
 local D = ns.DATA
@@ -65,19 +65,23 @@ function M:Update()
 		return
 	end
 	local spell = ns.ImbueSpell()
-	local show, status, urgent = false, nil, false
-	if ns.db.imbue and spell and HasWeapon() and not ns.InCombat() then
+	local show, status, urgent, uncertain = false, nil, false, false
+	local combat = ns.InCombat()
+	if ns.db.imbue and spell and HasWeapon() then
 		local left, unknown, different = ns.ImbueLeft()
+		local action = combat and (": " .. spell) or (": click for " .. spell)
 		if not left and not unknown then
-			show, status, urgent = true, (different and "Different imbue: click for " or "Missing: click for ") .. spell, true
+			show, status, urgent = true, (different and "Different imbue" or "Missing") .. action, true
 		elseif left and left <= ns.db.imbueMinutes * 60 then
-			show, status = true, Bound.FormatTime(left) .. " left: click for " .. spell
+			show, status = true, Bound.FormatTime(left) .. " left" .. action
+		elseif unknown and combat then
+			show, status, uncertain = true, "Imbue data unavailable", true
 		end
 	end
 	if show then
 		card:SetTitle("Weapon imbue")
 		card:SetStatus(status, urgent)
-		card:Show(); card:Glow(true)
+		card:Show(); card:Glow(not uncertain)
 	else
 		card:Glow(false); card:Hide()
 	end

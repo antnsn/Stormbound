@@ -1,4 +1,4 @@
---@moods: defaults empty stocked oil-only scales-only unlearned combat thresholds changes unlocked options
+--@moods: defaults empty stocked oil-only scales-only unlearned combat thresholds changes unlocked options unknown errors
 local T = dofile(wb.dir .. "/tests/_shaman.lua")
 local m = wb.mood
 T.shaman(m == "unlearned" and {} or { 546, 131, 20608 })
@@ -39,8 +39,18 @@ elseif m == "empty" then
 		"None left: Water Breathing can't be used")
 elseif m == "combat" then
 	wb.combat(true)
-	wb.expect("oil quiet in combat", oil(), false)
-	wb.expect("scales quiet in combat", scales(), false)
+	wb.expect("oil remains in combat", oil(), true)
+	wb.expect("scales remain in combat", scales(), true)
+	bags[17058], bags[17057] = 10, 10
+	update()
+	wb.expect("oil restock tracked in combat", oil(), false)
+	wb.expect("scales restock tracked in combat", scales(), false)
+	bags[17058], bags[17057] = 1, 2
+	update()
+	wb.expect("oil spending tracked in combat", oil(), true)
+	wb.expect("scales spending tracked in combat", scales(), true)
+	wb.expect("live oil count in combat", wb.frame("StormboundFishOilFrame").statusText:GetText(), "1 left")
+	wb.expect("live scales count in combat", wb.frame("StormboundFishScalesFrame").statusText:GetText(), "2 left")
 	wb.combat(false)
 	wb.expect("oil returns after combat", oil(), true)
 	wb.expect("scales returns after combat", scales(), true)
@@ -91,6 +101,44 @@ elseif m == "unlocked" then
 	wb.expect("oil preview hidden after locking", oil(), false)
 	wb.expect("scales preview hidden after locking", scales(), false)
 	wb.check(ns.defaults.foPoint ~= ns.defaults.fsPoint, "separate saved positions")
+elseif m == "unknown" then
+	wb.state.spells[8071] = "Stoneskin Totem"
+	local count, isSecret = C_Item.GetItemCount, ns.IsSecret
+	local secret = {}
+	ns.IsSecret = function(value) return value == secret or isSecret(value) end
+	C_Item.GetItemCount = function(id)
+		if id == 17058 or id == 17057 or id == 5175 then return secret end
+		return count(id)
+	end
+	wb.combat(true)
+	update()
+	wb.expect("unknown oil count stays visible", oil(), true)
+	wb.expect("unknown scales count stays visible", scales(), true)
+	wb.expect("unknown oil is not zero", wb.frame("StormboundFishOilFrame").statusText:GetText(), "Item count unavailable")
+	wb.expect("unknown scales is not zero", wb.frame("StormboundFishScalesFrame").statusText:GetText(), "Item count unavailable")
+	wb.expect("unknown count does not glow", wb.frame("StormboundFishOilFrame"):IsGlowing(), false)
+	wb.expect("unknown totem count is not missing", wb.frame("StormboundTotemItemsFrame").statusText:GetText(), "Item counts unavailable")
+	C_Item.GetItemCount, ns.IsSecret = count, isSecret
+	update()
+	wb.expect("readable zero count restores warning", wb.frame("StormboundFishOilFrame").statusText:GetText(),
+		"None left: Water Walking can't be used")
+elseif m == "errors" then
+	local count, printOriginal = C_Item.GetItemCount, ns.Print
+	local errors = 0
+	ns.Print = function(message)
+		if message:find("Couldn't count reagent 17058", 1, true) then errors = errors + 1 end
+	end
+	C_Item.GetItemCount = function(id)
+		if id == 17058 then error("test count failure") end
+		return count(id)
+	end
+	update(); update()
+	wb.expect("item read error reported once", errors, 1)
+	wb.expect("failed count is not zero", wb.frame("StormboundFishOilFrame").statusText:GetText(), "Item count unavailable")
+	C_Item.GetItemCount, ns.Print = count, printOriginal
+	update()
+	wb.expect("count recovers after API error", wb.frame("StormboundFishOilFrame").statusText:GetText(),
+		"None left: Water Walking can't be used")
 elseif m == "options" then
 	local toggles, sliders, page = {}, {}, nil
 	local UI = { CONTENT_W = 538 }

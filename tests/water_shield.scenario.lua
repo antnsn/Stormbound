@@ -1,6 +1,6 @@
---@moods: forever tbc-first tbc-second unlearned
+--@moods: forever tbc-first tbc-second unlearned combat
 local T = dofile(wb.dir .. "/tests/_shaman.lua")
-local ids = { forever = 408510, ["tbc-first"] = 24398, ["tbc-second"] = 33736 }
+local ids = { forever = 408510, ["tbc-first"] = 24398, ["tbc-second"] = 33736, combat = 408510 }
 local id = ids[wb.mood]
 T.shaman(id and { id } or {})
 wb.login({ saved = { StormboundDB = { shieldTrack = "Water", shieldChoice = "Water" } } })
@@ -36,4 +36,17 @@ else
 	wb.setAuras({ wb.aura("Water Shield", id, 600, 3) })
 	ns.UpdateBuffTimers()
 	wb.expect("Water Shield satisfies Any", shown(), false)
+	if wb.mood == "combat" then
+		wb.setAuras({ wb.aura("Water Shield", id, 45, 3) })
+		ns.UpdateBuffTimers()
+		local read = ns.ReadPlayerBuffs
+		ns.ReadPlayerBuffs = function() return {}, true end
+		wb.combat(true)
+		wb.expect("known shield countdown remains during combat restriction", shown(), true)
+		wb.check(not T.macroFor("Water Shield"), "shield cast overlay hidden in combat")
+		wb.advance(1)
+		wb.check(wb.frame("StormboundShieldFrame").statusText:GetText():find("left"), "cached duration still counts down")
+		ns.ReadPlayerBuffs = read
+		wb.combat(false)
+	end
 end

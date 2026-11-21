@@ -72,8 +72,16 @@ In `/storm`, page **Shield & imbue**:
 **Clicking the card does nothing in combat.**
 The game doesn't let addons cast for you in combat. A shield card can stay on screen during a fight, but the click works again once combat ends.
 
-**The imbue card stays away in combat.**
-It also stays away while you have no main-hand weapon equipped.
+**The imbue card keeps tracking during combat.**
+Missing, wrong and expiring imbues still show a reminder, but the click-to-cast button is disabled
+until combat ends. If the client hides enchant data during combat, the card says **Imbue data
+unavailable** rather than inventing a missing imbue. It stays away while you have no main-hand
+weapon equipped.
+
+**Shield aura access can be restricted during combat.**
+The shield timer can continue from its last readable expiration time, but Stormbound cannot
+detect charge loss, removal or refresh while Forever blocks aura reads. It refreshes when data
+becomes readable again; there is no claim of live aura tracking while access is blocked.
 
 **Only the main hand.**
 The imbue card looks at your main-hand weapon. An off-hand imbue is not checked.

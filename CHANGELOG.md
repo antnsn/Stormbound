@@ -2,8 +2,9 @@
 
 ## Unreleased
 
-- Track Maelstrom Weapon stacks on a movable card: show 1-4 stacks and blink at 5, including
-  in combat when the client exposes the aura. Toggle it on the new Maelstrom options page.
+- Keep reagent and weapon-imbue reminders active during combat; clicking to cast still requires
+  leaving combat. Unreadable item or imbue data is labeled unavailable instead of guessed.
+- Defer Maelstrom stack tracking because Forever blocks access to its aura during combat.
 - Add optional Fish Oil (Water Walking) and Shiny Fish Scales (Water Breathing) reminders.
   The Reagents options page has separate toggles and low-stock limits for these items and Ankhs.
 - The Escape-menu travel panel now contains only Astral Recall and Hearthstone.

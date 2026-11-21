@@ -29,7 +29,6 @@ Stormbound gives you one button per element with the totem that stands and its t
 - **Press Escape**: beside the game menu you get Astral Recall and your Hearthstone.
 
 ## Also in it
-- **Maelstrom Weapon stacks**: a movable card shows 1-4 stacks and blinks at 5, including in combat. Turn it on or off in **Maelstrom** options.
 - **Buff key** (Extras page): out of combat, each press casts the next thing a card asks for.
 - **Well Rested and Well Fed**: a countdown before they run out, with a sound if you like.
 - **Explained**: hover over a card or button for a plain-word explanation of what it does and why (can be turned off).

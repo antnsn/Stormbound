@@ -83,16 +83,8 @@ local function TravelPage(UI)
 	p:Add(select(2, UI.DBToggle(p, 0, p.y, UI.CONTENT_W, "travel", "Show the travel panel when the game menu opens")) + 8)
 end
 
-local function MaelstromPage(UI)
-	local p = UI.NewPage("Maelstrom", "Maelstrom Weapon: build five stacks, then use them.")
-	p:Add(select(2, UI.DBToggle(p, 0, p.y, UI.CONTENT_W, "maelstrom", "Track Maelstrom Weapon stacks",
-		"Shows 1-4 stacks and blinks at 5, including in combat.")) + 8)
-	p:Add(UI.Note(p, p.y, "The card hides when you have no stacks. Unlock the frames to move it. If the client hides the stack count, the card hides rather than showing an old count."))
-end
-
 ns.optionPages[#ns.optionPages + 1] = TotemPage
 ns.optionPages[#ns.optionPages + 1] = ShieldPage
 ns.optionPages[#ns.optionPages + 1] = ReagentPage
 ns.optionPages[#ns.optionPages + 1] = TravelPage
-ns.optionPages[#ns.optionPages + 1] = MaelstromPage
 Bound.InstallOptions(ns, { header = "Shaman helper", launcher = "Shaman helper: totems, shield, imbue, reagents." })

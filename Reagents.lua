@@ -1,5 +1,5 @@
 -- Missing totem items and low spell reagents. Each consumable has its own toggle and limit.
--- Only warn for learned spells, and stay quiet in combat.
+-- Only warn for learned spells; bag reminders remain active during combat.
 local _, ns = ...
 if ns.disabled then return end
 local D = ns.DATA
@@ -17,19 +17,31 @@ local REAGENTS = {
 }
 ns.REAGENT_TRACKERS = REAGENTS
 
+local countErrors = {}
 local function Count(id)
 	local ok, n = pcall(C_Item.GetItemCount, id)
-	return (ok and not ns.IsSecret(n) and n) or 0
+	if not ok then
+		if not countErrors[id] then ns.Print("Couldn't count reagent " .. id .. ": " .. tostring(n)) end
+		countErrors[id] = true
+		return nil
+	end
+	countErrors[id] = nil
+	if ns.IsSecret(n) or type(n) ~= "number" then return nil end
+	return n
 end
 
 -- the elements whose totems are learned but whose item isn't in the bags
 function ns.MissingTotemItems()
-	local out = {}
+	local out, unknown = {}, false
 	for _, k in ipairs(ORDER) do
 		local e = D.elements[k]
-		if ns.ElementKnown(k) and Count(e.item) == 0 then out[#out + 1] = e.itemName end
+		if ns.ElementKnown(k) then
+			local n = Count(e.item)
+			if n == nil then unknown = true
+			elseif n == 0 then out[#out + 1] = e.itemName end
+		end
 	end
-	return out
+	return out, unknown
 end
 
 local function Known(id)
@@ -51,20 +63,25 @@ function M:Update()
 		end
 		return
 	end
-	local quiet = ns.InCombat()
-	local missing = ns.MissingTotemItems()
-	if ns.db.totemItems and #missing > 0 and not quiet then
-		items:SetTitle(#missing == 1 and (missing[1] .. " missing") or "Totem items missing")
-		items:SetStatus(table.concat(missing, ", "), true)
-		items:Show(); items:Glow(true)
+	local missing, unknown = {}, false
+	if ns.db.totemItems then missing, unknown = ns.MissingTotemItems() end
+	if ns.db.totemItems and (#missing > 0 or unknown) then
+		items:SetTitle(#missing == 0 and "Totem items" or (#missing == 1 and (missing[1] .. " missing") or "Totem items missing"))
+		local status = table.concat(missing, ", ")
+		if unknown then status = #missing > 0 and (status .. "; other counts unavailable") or "Item counts unavailable" end
+		items:SetStatus(status, #missing > 0)
+		items:Show(); items:Glow(#missing > 0)
 	else
 		items:Glow(false); items:Hide()
 	end
 	for i, r in ipairs(REAGENTS) do
-		local card, n = cards[i], Count(r.item)
-		if ns.db[r.key] and Known(r.spell) and n <= ns.db[r.low] and not quiet then
-			card:SetStatus(n == 0 and ("None left: " .. r.spellName .. " can't be used") or (n .. " left"), n == 0)
-			card:Show(); card:Glow(true)
+		local card = cards[i]
+		local enabled = ns.db[r.key] and Known(r.spell)
+		local n = enabled and Count(r.item) or nil
+		if enabled and (n == nil or n <= ns.db[r.low]) then
+			card:SetStatus(n == nil and "Item count unavailable"
+				or (n == 0 and ("None left: " .. r.spellName .. " can't be used") or (n .. " left")), n == 0)
+			card:Show(); card:Glow(n ~= nil)
 		else
 			card:Glow(false); card:Hide()
 		end

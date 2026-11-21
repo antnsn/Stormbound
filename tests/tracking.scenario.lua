@@ -84,7 +84,8 @@ else
 		update()
 		wb.expect("unrelated enchant does not satisfy Windfury", imbueShown(), true)
 		wb.combat(true)
-		wb.expect("mismatch reminder hidden in combat", imbueShown(), false)
+		wb.expect("mismatch reminder remains in combat", imbueShown(), true)
+		wb.check(not T.macroFor("Rockbiter Weapon"), "mismatch cannot be clicked in combat")
 		wb.combat(false)
 		update()
 		wb.expect("mismatch returns after combat", imbueShown(), true)
@@ -130,6 +131,12 @@ else
 		ns.IsSecret = function(value) return value == enchantID or isSecret(value) end
 		update()
 		wb.expect("secret identity does not claim mismatch", imbueShown(), false)
+		wb.combat(true)
+		update()
+		wb.expect("unreadable combat data keeps an honest indicator", imbueShown(), true)
+		wb.expect("unreadable combat status", wb.frame("StormboundImbueFrame").statusText:GetText(), "Imbue data unavailable")
+		wb.expect("unknown data does not glow", wb.frame("StormboundImbueFrame"):IsGlowing(), false)
+		wb.combat(false)
 		ns.IsSecret = isSecret
 	elseif m == "options" then
 		local rows = {}

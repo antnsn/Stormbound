@@ -56,8 +56,10 @@ In `/storm`, page **Reagents**:
 
 ## Good to know
 
-**All reagent cards stay away in combat.**
-They come back when the fight is over.
+**All reagent cards keep tracking during combat.**
+Ankhs, Fish Oil, Shiny Fish Scales and missing totem items continue to update as bag contents change.
+If the client withholds an item count, its card says the count is unavailable rather than claiming
+you have none.
 
 **Stormbound doesn't buy Ankhs.**
 It only counts them. Buy them yourself at a reagent vendor.
