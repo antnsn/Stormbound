@@ -7,8 +7,8 @@ local Bound = LibStub("LibBound-1.0")
 -- Checked in game before each release.
 ns.DATA = {
 	lightningShield = { 324, 325, 905, 945, 8134, 10431, 10432 },
-	-- Water and Earth Shield: TBC IDs, Forever has them (Marius); checked in game before 0.1.0
-	waterShield = { 24398, 33736 },
+	-- Water Shield also uses 408510 on Forever (confirmed from the client spellbook).
+	waterShield = { 24398, 33736, 408510 },
 	earthShield = { 974, 32593, 32594 },
 	rockbiter = { 8017, 8018, 8019, 10399, 16314, 16315, 16316 },
 	flametongue = { 8024, 8027, 8030, 16339, 16341, 16342 },

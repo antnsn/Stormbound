@@ -6,6 +6,7 @@
 - Track a specific shield or imbue, or choose **Any** to accept any shaman shield or main-hand
   temporary weapon enchant. Specific imbue tracking warns when a different enchant is active.
 - Existing shield and cast preferences are kept; weapon tracking still defaults to Any.
+- Recognize Forever's Water Shield spell (408510), so its missing-shield reminder and click-to-cast work.
 
 ## 0.1.0 beta 5
 
