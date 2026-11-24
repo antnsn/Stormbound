@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+- **Carrot on a Stick** (Extras page, off by default): put it on when you mount, in the trinket slot you pick, and your own trinket back when you get off. Not in instances; in combat it waits until the fight is over. From LibBound, the same as in Lightbound.
+- The Extras page is tidier: the Well-Rested and Well Fed switches sit in one row each.
+
 ## 0.1.0 beta 6
 
 - Reset invalid saved imbue-tracking choices to Any with a notification instead of failing.

@@ -31,6 +31,7 @@ Stormbound gives you one button per element with the totem that stands and its t
 ## Also in it
 - **Buff key** (Extras page): out of combat, each press casts the next thing a card asks for.
 - **Well Rested and Well Fed**: a countdown before they run out, with a sound if you like.
+- **Carrot on a Stick** (Extras page, off by default): worn while you ride, in the trinket slot you pick; your own trinket goes back on when you get off. Not in instances, and never in combat.
 - **Explained**: hover over a card or button for a plain-word explanation of what it does and why (can be turned off).
 - **Your layout**: every frame can be moved, snapped to a grid and scaled (`/storm unlock`).
 - **Three skins**: the shaman look, Blizzard and Flat.
