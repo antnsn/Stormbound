@@ -3,6 +3,15 @@
 Shaman addon of the Bound family for WoW: Forever, built on LibBound-1.0 (`../LibBound`). Design:
 the Obsidian vault, `Private/projects/Bound Addons/Stormbound Design.md`.
 
+## Skills
+
+Shared knowledge lives in Claude Code skills (plugin `wow-addons`, repo antnsn/addon-skills). Load the
+one that fits before working here; this file only holds what is specific to this repo.
+
+- `wow-addons:bound-addons`: the Bound family and LibBound: what goes where, MINOR, rolling a change out, tests, style
+- `wow-addons:forever-client`: the Forever client API: secret values, missing globals, API lookups, probing in game
+- `wow-addons:addon-release`: releasing: tag, CurseForge webhook, the token, changelog, docs, screenshots
+
 ## Build & test
 
 No build step: WoW loads the .lua files directly. Before committing, from this folder:
@@ -22,8 +31,8 @@ every Bound addon belongs in LibBound, not here. Run `/codex:review` before ever
 Changes go through pull requests that Claude opens and merges itself:
 `git switch -c <topic>`, commit (with `.beads/issues.jsonl`), `git push -u origin <topic>`,
 `gh pr create --fill` (body ends with the Claude Code attribution line),
-`gh pr merge --squash --delete-branch`. Releases: tag on main, `wowbench pack . --set-version X`,
-`gh release create vX dist/Stormbound-X.zip`.
+`gh pr merge --squash --delete-branch`. Releases: `wow-addons:addon-release` (a signed tag on main;
+CurseForge packages it through the webhook).
 
 CurseForge: `CURSEFORGE.md` is the project page (pasted by hand) and `Stormbound.png` its picture (made by `tools/make_media.py`). Before a release: write the version in `CHANGELOG.md`, run `python3 tools/sync_curseforge.py` (it copies the changelog to the bottom of the page). The comment at the top of `CURSEFORGE.md` is the text for CurseForge's "Summary" field (at most 256 characters; the tool checks it, `--summary` prints it).
 
