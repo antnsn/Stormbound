@@ -16,6 +16,8 @@ Everything in Stormbound can be set in the options window (`/storm`). These chat
 | --- | --- |
 | `/storm` | Opens or closes the options window. `/storm options` and `/storm config` do the same. |
 | `/storm help` | Lists the commands in chat. |
+| `/storm ignore Debuff Name` | Adds a debuff to the [cure](features/cure.html) ignore list, or removes it if it's already there. Not case sensitive. |
+| `/storm ignore` | Lists the ignored debuffs. |
 
 ## Frames
 

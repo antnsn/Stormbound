@@ -7,7 +7,7 @@ local NAMES = {
 	[8017] = "Rockbiter Weapon", [8024] = "Flametongue Weapon", [8033] = "Frostbrand Weapon", [8232] = "Windfury Weapon",
 	[8071] = "Stoneskin Totem", [3599] = "Searing Totem", [5394] = "Healing Stream Totem", [8177] = "Grounding Totem",
 	[8075] = "Strength of Earth Totem", [5730] = "Stoneclaw Totem",
-	[556] = "Astral Recall", [20608] = "Reincarnation", [429959] = "Well-Rested",
+	[556] = "Astral Recall", [20608] = "Reincarnation", [526] = "Cure Poison", [2870] = "Cure Disease", [429959] = "Well-Rested",
 }
 function M.shaman(known)
 	local s = wb.state

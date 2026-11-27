@@ -25,6 +25,10 @@ Stormbound gives you one button per element with the totem that stands and its t
 - Says when an **Earth, Fire, Water or Air Totem** item is missing (without it that element's totems can't be dropped) and when **Ankhs** run low for Reincarnation.
 - In **Reagents** options, choose whether to track Ankhs, **Fish Oil** for Water Walking, and **Shiny Fish Scales** for Water Breathing. Each has its own low-stock limit; the two water-spell reminders start turned off.
 
+## Cure
+- A **grid of your group** that lights up when someone has Poison or a Disease you can remove: click for Cure Poison, right-click for Cure Disease. Works in combat.
+- A key for each that casts on whoever is under your mouse, in any raid frame too.
+
 ## Travel
 - **Press Escape**: beside the game menu you get Astral Recall, Water Breathing, Water Walking and your Hearthstone.
 

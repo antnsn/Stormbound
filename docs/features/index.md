@@ -17,4 +17,5 @@ Stormbound does a few shaman jobs for you. Each page below covers one of them: w
 - [Well-Rested and Well Fed](well-rested-and-well-fed.html): a warning and a countdown before they run out.
 - [Explanations](explanations.html): tooltips that say what a card or button is for.
 - [Frames and minimap](frames-and-minimap.html): moving and resizing frames, the grid, and the minimap button.
+- [Cure](cure.html): a grid of your group that lights up when someone has Poison or a Disease you can remove.
 - [Skins](skins.html): Storm, Blizzard or Flat, to match the rest of your UI.

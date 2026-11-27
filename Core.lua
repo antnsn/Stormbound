@@ -6,6 +6,8 @@ local Bound = LibStub("LibBound-1.0")
 -- Spells and items, lowest rank first. Classic IDs; Forever follows Classic content.
 -- Checked in game before each release.
 ns.DATA = {
+	curePoison = { 526 },
+	cureDisease = { 2870 },
 	lightningShield = { 324, 325, 905, 945, 8134, 10431, 10432 },
 	-- Water Shield also uses 408510 on Forever (confirmed from the client spellbook).
 	waterShield = { 24398, 33736, 408510 },
