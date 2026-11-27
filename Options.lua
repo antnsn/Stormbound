@@ -86,5 +86,6 @@ end
 ns.optionPages[#ns.optionPages + 1] = TotemPage
 ns.optionPages[#ns.optionPages + 1] = ShieldPage
 ns.optionPages[#ns.optionPages + 1] = ReagentPage
+if ns.CleansePage then ns.optionPages[#ns.optionPages + 1] = ns.CleansePage end -- Cure (Cure.lua)
 ns.optionPages[#ns.optionPages + 1] = TravelPage
 Bound.InstallOptions(ns, { header = "Shaman helper", launcher = "Shaman helper: totems, shield, imbue, reagents." })

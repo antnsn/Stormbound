@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- **Cure**: a grid of your group (or a list) that shows who has Poison or a Disease you can remove. Click a cell for Cure Poison, right-click for Cure Disease. Each has a key that casts on whoever is under your mouse, in combat too. Set it up on the new Cure page; `/storm ignore <debuff>` hides one you don't want to see. The same frame as Lightbound's Cleanse.
+
 ## 0.1.0 beta 7
 
 - **Carrot on a Stick** (Extras page, off by default): put it on when you mount, in the trinket slot you pick, and your own trinket back when you get off. Not in instances; in combat it waits until the fight is over. From LibBound, the same as in Lightbound.
