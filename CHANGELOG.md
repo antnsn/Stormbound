@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.1.0
 
 - **The Cure frame stays out of the way**: it only shows in combat, or when someone has a debuff you can remove (not in town while nobody needs it). Untick **Only in combat or when someone needs it** on the Cure page to keep it up.
 - **Camp Benefits** (Forever's campfire buff, new **Camp** page): a warning before it runs out, and a chat line naming the camp features you ticked that the campfire lacks (Camp Chair, First Aid Kit, Mana Well, ...). From LibBound, the same in every Bound addon.
