@@ -8,7 +8,7 @@ if wb.mood == "shaman" then
 	wb.check(wb.shown("StormboundOptions"), "/storm opens the options")
 	local titles = {}
 	for _, p in ipairs(wb.ns.optionsState.pages) do titles[#titles + 1] = p.title end
-	wb.expect("pages", table.concat(titles, ", "), "Totems, Shield & imbue, Reagents, Cure, Travel, Extras, Skin")
+	wb.expect("pages", table.concat(titles, ", "), "Totems, Shield & imbue, Reagents, Cure, Travel, Extras, Camp, Skin")
 	wb.slash("/stormunlock")
 	wb.expect("space-free alias unlocks", wb.ns.unlocked, true)
 	wb.slash("/storm lock")

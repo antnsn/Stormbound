@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- **Camp Benefits** (Forever's campfire buff, new **Camp** page): a warning before it runs out, and a chat line naming the camp features you ticked that the campfire lacks (Camp Chair, First Aid Kit, Mana Well, ...). From LibBound, the same in every Bound addon.
 - **Cure**: a grid of your group (or a list) that shows who has Poison or a Disease you can remove. Click a cell for Cure Poison, right-click for Cure Disease. Each has a key that casts on whoever is under your mouse, in combat too. Set it up on the new Cure page; `/storm ignore <debuff>` hides one you don't want to see. The same frame as Lightbound's Cleanse.
 
 ## 0.1.0 beta 7
