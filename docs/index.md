@@ -16,9 +16,6 @@ The shaman helper for World of Warcraft: Forever.
 
 ---
 
-{: .note }
-Stormbound is in beta. Spell IDs come from Classic and are checked on Forever; tell us what doesn't work.
-
 ## Why Stormbound exists
 
 A shaman keeps track of a lot at once. Four totems with their own timers, a shield that runs out of charges, a weapon imbue that fades, totem items you need in your bags, and Ankhs for Reincarnation. Missing one of them is easy.
