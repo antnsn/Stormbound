@@ -42,6 +42,7 @@ In `/storm`, page **Cure**:
 | Dim players out of range | On | |
 | Sound when someone new needs it | On | |
 | Show when solo | On | Just you. Off: only in a group. |
+| Only in combat or when someone needs it | On | Out of combat the frame hides until someone has a debuff you can remove, so it isn't up in town. In combat it's always there. |
 | Names in cells (26 px and up) | Off | Three letters of each name, from 26 px cells up. |
 | Grid or list | Grid | Grid: a cell per group member that follows the roster in combat. List: a row per afflicted player. |
 | Grid: cells per row | 5 | 1 to 10. |
